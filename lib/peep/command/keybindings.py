@@ -23,12 +23,12 @@ def prev(app):
   'selects the previous item in the list'
   return app.ui.grid_panel.prev(app.reader.get_unread_entries())
 
-@bindkey(MODE.BROWSE, 'j')
+@bindkey(MODE.BROWSE, 'J')
 def next_browse(app):
   'show the next item'
   if next(app): switch_browse_mode(app)
 
-@bindkey(MODE.BROWSE, 'k')
+@bindkey(MODE.BROWSE, 'K')
 def prev_browse(app):
   'show the previous item'
   if prev(app): switch_browse_mode(app)
@@ -43,12 +43,12 @@ def up(app):
   'go back to the previous page'
   app.ui.browse_panel.up(get_selected_entry(app))
 
-@bindkey(MODE.BROWSE, 'J', '\n')
+@bindkey(MODE.BROWSE, 'j', '\n')
 def down1(app):
   'go down one line'
   app.ui.browse_panel.down(get_selected_entry(app), 1)
 
-@bindkey(MODE.BROWSE, 'K')
+@bindkey(MODE.BROWSE, 'k')
 def up1(app):
   'go up one line'
   app.ui.browse_panel.up(get_selected_entry(app), 1)
@@ -64,7 +64,6 @@ def switch_browse_mode(app):
   app.reader.set_read(entry)
 
 @bindkey(MODE.UNREAD, 'p')
-@bindkey(MODE.BROWSE, 'p')
 @update_status
 def toggle_pin(app):
   'switches the pin status of the selected item'
@@ -134,7 +133,7 @@ def reload(app):
   app.ui.grid_panel.clear()
   switch_unread_mode(app)
 
-@bindkey(MODE.BROWSE, 'u', 'q')
+@bindkey(MODE.BROWSE, 'u', 'q', 'p')
 @loading
 @update_status
 def switch_unread_mode(app):
